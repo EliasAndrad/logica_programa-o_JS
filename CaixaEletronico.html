@@ -1,0 +1,190 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+
+	<script>
+
+		var saldo = 100.5; 
+
+		
+		
+
+		nome_usuario ()
+		alert ('Olá' +  ' ' + usuario + ' é um prazer ter você aqui')
+
+		
+
+		
+		
+
+		function inicio() {
+
+			//No menu principal, a ordem das opções deve ser: Saldo, Extrato, Saque, Depósito, Transferência e Sair. 	
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) extrato 3.) Saque 4.) deposito 5.)transferencia 6.)sair'));
+
+			
+			switch(escolha){
+				case 1: 
+					pedir_senha();
+					ver_saldo();
+					return
+					break
+				case 2:
+					pedir_senha();
+					extrato_usuario();
+					break
+				case 3:
+					pedir_senha();
+					fazer_saque();
+					break
+				case 4:
+					pedir_senha();
+					fazer_deposito();
+					break
+				case 5:
+					pedir_senha();
+					fazer_transferencia();
+					break
+				case 6:
+					sair();
+					break
+				default:
+					erro();
+			}
+		}		
+
+		function ver_saldo() {
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			
+			if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número:');
+				fazer_deposito();
+			}else if(deposito <= 0){
+				alert('operação invalida')
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			}else if (saque > saldo || saque <= 0){
+				alert('Transação não autorizada')
+				fazer_saque();
+			
+			}else {
+				saldo -= saque;
+				
+				ver_saldo();
+			}
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert ('Obrigado por ultilizar os serviços do banco PROA'+  ' ' + usuario + ', foi um prazer ter você aqui')
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+		function nome_usuario(){
+			usuario = prompt('Digite o seu nome usuario')
+		}
+		
+		function extrato_usuario(){
+			
+			alert(extrato)
+			inicio();			
+		}
+
+
+		
+
+		var extrato = [
+			{descrição: 'compra na padaria', valor:30},
+			{descrição: 'cinema', valor:80},
+			{descrição: 'transferencia',valor: 100}
+			
+		];
+		extrato = JSON.stringify(extrato, null, 2);
+		inicio();v
+
+
+
+	function fazer_transferencia(){
+		var destinatario = prompt('Informe a conta do destinatário');
+		var transferencia = prompt('Informe o valor da transferência');
+
+		if (isNaN(transferencia) || transferencia === '') {
+			alert('Informe um valor válido');
+			fazer_transferencia();
+		} else if (transferencia > saldo || transferencia <= 0) {
+			alert('Transação não autorizada');
+			fazer_transferencia();
+		}else{
+				saldo -= transferencia
+
+
+				ver_saldo();
+			}
+		}
+	
+		function pedir_senha(){
+			var senha = prompt('Digite sua senha')
+
+			if (isNaN(senha) || senha === ''){
+				alert ('informe um valor valido');
+				pedir_senha();
+			}else if (senha !='3589'){
+				alert('senha incorreta');
+				pedir_senha();
+
+			}
+			
+		}
+
+		
+		
+	</script>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">2400.00000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ReferenceId msdt:dt="string"></mso:ReferenceId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:ContentTypeId msdt:dt="string">0x01010007715694252FA147AD75DD5D81F5DACE</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+<title></title></head>
+
+<body>
+
+</body>
+
+</html>
